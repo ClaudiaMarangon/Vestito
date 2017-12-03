@@ -1,0 +1,271 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+        Page title
+{% endblock %}
+
+{% block styles %}
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="{% static "vestito/indx.css" %}">
+        <body style="padding-top: 3rem; padding-bottom: 0rem;"/>
+
+
+{% endblock %}
+
+{% block content %}
+    <pi class="block"> </pi>
+			<div class="row">
+				<div class="col-md-8 col-xs-12">
+					
+					<div style="display:none;">
+						<input id="cappello" type="text" value="10">
+						<input id="maglietta" type="text" value="10">
+						<input id="pantaloni" type="text" value="10">
+						<input id="guanti" type="text" value="10">
+						<input id="scarpe" type="text" value="10">
+					</div>
+						
+					<img id="ominoImage" src="{% static "vestito/omino.jpg" %}"/>
+					<div class="omino">
+						<svg height="670" width="292">
+							<path id="mag" onclick="magclick()"
+								d="M 105 185
+								l 20 0
+								l 20 40
+								l 20 -40
+								l 20 0
+								l 5 -20
+								l 25 0
+								l 50 50
+								l -40 40
+								l -20 -20
+								l -0 120
+								l -120 -0
+								l 0 -120
+								l -20 20
+								l -40 -40
+								l 50 -50
+								l 25 0
+								z" stroke="black" stroke-width="2" fill="gray"  
+							/>
+							
+							<path id="pant" onclick="pantclick()" 
+								d="M 90 355
+								l 110 0
+								l 30 200
+								l -50 0
+								l -30 -150
+								l -30 150
+								l -50 0
+								z" stroke="black" stroke-width="2" fill="gray" 
+							/>
+						
+							<path id="shoe1" onclick="shoeclick()" 
+								d="M 82 560
+								l 30 0
+								l 0 40
+								l -60 0
+								q -15 0 -15 -15
+								q 0 -15 25 -15
+								l 0 10
+								l 4 0
+								l 0 -10
+								l 10 0
+								l 0 10
+								l 4 0
+								l 0 -10
+								z" stroke="black" stroke-width="2" fill="gray"
+							/>
+						
+							<path  id="shoe2" onclick="shoeclick()" 
+								d="M 222 560
+								l -30 0
+								l 0 40
+								l 60 0
+								q 15 0 15 -15
+								q 0 -15 -25 -15
+								l 0 10
+								l -4 0
+								l 0 -10
+								l -10 0
+								l 0 10
+								l -4 0
+								l 0 -10
+								z" stroke="black" stroke-width="2" fill="gray"
+							/>
+						
+							<path id="glove1" onclick="gloveclick()" 
+								d="M 40 350
+								l -30 10
+								l 5 20
+								q 5 20 20 20
+								q 20 0 20 -20
+								l -10 -15
+								l 10 5
+								q 15 5 10 -10
+								z" stroke="black" stroke-width="2" fill="gray"
+							/>
+							
+							<path  id="glove2" onclick="gloveclick()" 
+								d="M 255 350
+								l 30 10
+								l -5 20
+								q -5 20 -20 20
+								q -20 0 -20 -20
+								l 10 -15
+								l -10 5
+								q -15 5 -10 -10
+								z" stroke="black" stroke-width="2" fill="gray"
+							/>
+							
+							<path id="hat" onclick="hatclick()" 
+								d="M 142 10
+								l 60 5
+								l -20 60
+								l 20 5
+								l -2 5
+								l -100 -10
+								l 2 -5
+								l 20 -2
+								z
+								"stroke="black" stroke-width="2"  fill="gray"
+							/>
+						</svg>
+					</div> <!-- Omino -->
+
+					<div class="modal fade in" id="colors" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none; padding-right: 17px;">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h3 class="modal-title" id="myModalLabel">Scegli il colore per l'indumento</h3>
+								</div>
+								
+								<div class="modal-body">
+									<p>Per scegliere un colore clicca su di esso, la modifica verrà salvata automaticamente!</p>
+									<br/>
+								
+									<div class="container-fluid">
+										<div class="row riga">
+											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 color" onclick="changeColor('1');" style="background-color: #f44336;"></div>
+											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 color" onclick="changeColor('2');" style="background-color: #ff9800;"></div>
+											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 color" onclick="changeColor('3');" style="background-color: #ffeb3b;"></div>
+										</div>                                                                              
+																						                                    
+										<div class="row riga">                                                              
+											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>							
+											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 color" onclick="changeColor('4');" style="background-color: #8bc34a;"></div>
+											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 color" onclick="changeColor('5');" style="background-color: #3f51b5;"></div>
+											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 color" onclick="changeColor('6');" style="background-color: #29b6f6;"></div>
+										</div>                                                                              
+																						                                    
+										<div class="row riga">                                                              
+											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>							
+											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 color" onclick="changeColor('7');" style="background-color: #ce93d8;"></div>
+											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 color" onclick="changeColor('8');" style="background-color: #ffffff;"></div>
+											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 color" onclick="changeColor('9');" style="background-color: #000000;"></div>
+										</div>
+										
+										<div class="row">
+											<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>	
+											<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 grey" onclick="changeColor('10')" style="background-color: #9e9e9e;"></div>
+										</div>
+									</div>
+								
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Annulla</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="hidden-xs col-md-2">
+					&nbsp
+				</div>
+				
+			</div>
+
+
+    {% next_button %}
+{% endblock %}
+
+{% block scripts %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="{% static "vestito/index.js" %}"></script>
+
+    <script>
+
+	var cappello = document.getElementById("cappello").value;
+	var maglia = document.getElementById("maglietta").value;
+	var pantaloni = document.getElementById("pantaloni").value;
+	var guanti = document.getElementById("guanti").value;
+	var scarpe = document.getElementById("scarpe").value;
+
+
+
+    function magclick() {
+        lastelements = [document.getElementById('mag'), 0, document.getElementById("maglietta")];
+        $('#colors').modal('toggle');
+    }
+
+    function pantclick() {
+        lastelements = [document.getElementById('pant'), 0, document.getElementById("pantaloni")];
+        $('#colors').modal('toggle');
+    }
+
+    function shoeclick() {
+        lastelements = [document.getElementById('shoe1'), document.getElementById("shoe2"), document.getElementById("scarpe")];
+        $('#colors').modal('toggle');
+    }
+
+    function gloveclick() {
+        lastelements = [document.getElementById('glove1'), document.getElementById('glove2'), document.getElementById("guanti")];
+        $('#colors').modal('toggle');
+    }
+
+    function hatclick() {
+        lastelements = [document.getElementById('hat'), 0, document.getElementById("cappello")];
+        $('#colors').modal('toggle');
+    }
+
+    function changeColor(color) {
+        $('#colors').modal('toggle');
+        lastelements[0].setAttribute("fill", idToColor(color));
+        if (lastelements[1] != 0)
+            lastelements[1].setAttribute("fill", idToColor(color));
+        lastelements[2].value = color;
+    }
+
+    function idToColor(color) {
+        if (color == "1")
+            return "#f44336";
+        if (color == "2")
+            return "#ff9800";
+        if (color == "3")
+            return "#ffeb3b";
+        if (color == "4")
+            return "#8bc34a";
+        if (color == "5")
+            return "#3f51b5";
+        if (color == "6")
+            return "#29b6f6";
+        if (color == "7")
+            return "#ce93d8";
+        if (color == "8")
+            return "#ffffff";
+        if (color == "9")
+            return "#000000";
+        if (color == "10")
+            return "#9e9e9e";
+    }
+
+
+    </script>
+{% endblock %}
+

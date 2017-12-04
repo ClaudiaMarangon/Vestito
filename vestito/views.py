@@ -5,6 +5,8 @@ from .models import Constants
 
 
 class vestito(Page):
+    form_model = models.Player
+    form_fields = ['tshirt', 'hat', 'pants', 'gloves', 'shoes']
     pass
 
 

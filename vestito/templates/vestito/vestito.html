@@ -14,16 +14,17 @@
 {% endblock %}
 
 {% block content %}
+    <p>Please chose the color of each cloth by clicking on it.</p>
     <pi class="block"> </pi>
 			<div class="row">
 				<div class="col-md-8 col-xs-12">
-					
+
 					<div style="display:none;">
-						<input id="cappello" type="text" value="10">
-						<input id="maglietta" type="text" value="10">
-						<input id="pantaloni" type="text" value="10">
-						<input id="guanti" type="text" value="10">
-						<input id="scarpe" type="text" value="10">
+						<input id="cappello" type="hidden" name="hat">
+						<input id="maglietta" type="hidden" name="tshirt">
+						<input id="pantaloni" type="hidden" name="pants">
+						<input id="guanti" type="hidden" name="gloves">
+						<input id="scarpe" type="hidden" name="shoes">
 					</div>
 						
 					<img id="ominoImage" src="{% static "vestito/omino.jpg" %}"/>
@@ -47,9 +48,9 @@
 								l -40 -40
 								l 50 -50
 								l 25 0
-								z" stroke="black" stroke-width="2" fill="gray"  
+								z" stroke="black" stroke-width="2" fill="gray"
 							/>
-							
+
 							<path id="pant" onclick="pantclick()" 
 								d="M 90 355
 								l 110 0
@@ -239,7 +240,8 @@
         lastelements[0].setAttribute("fill", idToColor(color));
         if (lastelements[1] != 0)
             lastelements[1].setAttribute("fill", idToColor(color));
-        lastelements[2].value = color;
+        var col = idToColor(color);
+        lastelements[2].value = col;
     }
 
     function idToColor(color) {

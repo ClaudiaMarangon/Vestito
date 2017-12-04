@@ -26,8 +26,9 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    prova = models.CharField(
-        choices=['si', 'no'],
-        widget=widgets.RadioSelect
-    )
+    tshirt = models.CharField()
+    hat = models.CharField()
+    pants = models.CharField()
+    gloves = models.CharField()
+    shoes = models.CharField()
     pass

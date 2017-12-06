@@ -13,7 +13,7 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'vestito'
-    players_per_group = None
+    players_per_group = 5
     num_rounds = 1
 
 
@@ -31,4 +31,5 @@ class Player(BasePlayer):
     pants = models.CharField()
     gloves = models.CharField()
     shoes = models.CharField()
+    hist = models.TextField()
     pass

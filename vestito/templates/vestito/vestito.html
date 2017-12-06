@@ -25,7 +25,9 @@
 						<input id="pantaloni" type="hidden" name="pants">
 						<input id="guanti" type="hidden" name="gloves">
 						<input id="scarpe" type="hidden" name="shoes">
+                        <input id="histor" type="hidden" name="hist">
 					</div>
+
 						
 					<img id="ominoImage" src="{% static "vestito/omino.jpg" %}"/>
 					<div class="omino">
@@ -140,11 +142,11 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h3 class="modal-title" id="myModalLabel">Scegli il colore per l'indumento</h3>
+									<h3 class="modal-title" id="myModalLabel">Choose the color of the piece of clothing</h3>
 								</div>
 								
 								<div class="modal-body">
-									<p>Per scegliere un colore clicca su di esso, la modifica verrà salvata automaticamente!</p>
+									<p>To choose a color just click on it, your changes will be automatically saved!</p>
 									<br/>
 								
 									<div class="container-fluid">
@@ -177,7 +179,7 @@
 								
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-danger" data-dismiss="modal">Annulla</button>
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
 								</div>
 							</div>
 						</div>
@@ -189,9 +191,12 @@
 				</div>
 				
 			</div>
-
-
+    {% if player1%}
+    {% chat channel="1" %}
+    {%  endif %}
+    {{ form.hist.errors }}
     {% next_button %}
+
 {% endblock %}
 
 {% block scripts %}
@@ -201,12 +206,6 @@
 	    <script type="text/javascript" src="{% static "vestito/index.js" %}"></script>
 
     <script>
-
-	var cappello = document.getElementById("cappello").value;
-	var maglia = document.getElementById("maglietta").value;
-	var pantaloni = document.getElementById("pantaloni").value;
-	var guanti = document.getElementById("guanti").value;
-	var scarpe = document.getElementById("scarpe").value;
 
 
 
@@ -237,36 +236,46 @@
 
     function changeColor(color) {
         $('#colors').modal('toggle');
-        lastelements[0].setAttribute("fill", idToColor(color));
+        lastelements[0].setAttribute("fill", idToColor(color).value);
         if (lastelements[1] != 0)
-            lastelements[1].setAttribute("fill", idToColor(color));
-        var col = idToColor(color);
+            lastelements[1].setAttribute("fill", idToColor(color).value);
+        var col = idToColor(color).name;
         lastelements[2].value = col;
+
+        var history = document.getElementById('histor').value
+        var cappello = document.getElementById("cappello").value;
+	    var maglia = document.getElementById("maglietta").value;
+	    var pantaloni = document.getElementById("pantaloni").value;
+	    var guanti = document.getElementById("guanti").value;
+	    var scarpe = document.getElementById("scarpe").value;
+        var newRow = "Tshirt: " + maglia + ", " + "hat: " + cappello + ", " + "pants: " + pantaloni + ", " + "gloves: " + guanti + ", " + "shoes: " + scarpe
+        history = history + newRow + "///"
+
+        document.getElementById('histor').value = history.toString()
     }
 
     function idToColor(color) {
         if (color == "1")
-            return "#f44336";
+            return {name: "red", value: "#f44336"}
         if (color == "2")
-            return "#ff9800";
+            return {name: "orange", value:"#ff9800"}
         if (color == "3")
-            return "#ffeb3b";
+            return {name: "yellow", value: "#ffeb3b"}
         if (color == "4")
-            return "#8bc34a";
+            return {name: "green", value: "#8bc34a"}
         if (color == "5")
-            return "#3f51b5";
+            return {name: "blue", value:"#3f51b5"}
         if (color == "6")
-            return "#29b6f6";
+            return {name: "lightblue", value: "#29b6f6"}
         if (color == "7")
-            return "#ce93d8";
+            return {name: "purple", value:"#ce93d8"}
         if (color == "8")
-            return "#ffffff";
+            return {name: "white", value:"#ffffff"}
         if (color == "9")
-            return "#000000";
+            return {name: "black", value:"#000000"}
         if (color == "10")
-            return "#9e9e9e";
+            return {name: "grey", value:"#9e9e9e"}
     }
-
 
     </script>
 {% endblock %}

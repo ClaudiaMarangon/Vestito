@@ -19,15 +19,27 @@ class vestito(Page):
         }
     pass
 
-
+class ResultsWP(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_payoffs()
+    pass
 
 
 
 class Results(Page):
+    def vars_for_template(self):
+        return {
+            'zero_pay': self.player.payoff == Constants.zeropay,
+            'max_pay': self.player.payoff == Constants.maxpay,
+        }
     pass
 
+class resprova(Page):
+    pass
 
 page_sequence = [
     Rules,
     vestito,
+    ResultsWP,
+    Results,
 ]

@@ -20,6 +20,7 @@ class vestito(Page):
     pass
 
 class ResultsWP(WaitPage):
+
     def after_all_players_arrive(self):
         self.group.set_payoffs()
     pass

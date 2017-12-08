@@ -16,23 +16,36 @@ class Constants(BaseConstants):
     name_in_url = 'vestito'
     players_per_group = 5
     num_rounds = 1
-    tshirt_col = 1
-    hat_col = 2
-    pants_col = 3
-    gloves_col = 4
-    shoes_col = 5
     maxpay = 100
     twopay = 50
     threepay = 33
     fourpay = 25
     fivepay = 20
     zeropay = 0
+    color_list = ['red', 'orange', 'yellow', 'blue', 'lightblue',
+                  'purple', 'green', 'white', 'grey', 'black']
 
 class Subsession(BaseSubsession):
+
+    def creating_session(self):
+        for g in self.get_groups():
+            g.tshirt_col = random.choice(Constants.color_list)
+            g.hat_col = random.choice(Constants.color_list)
+            g.pants_col = random.choice(Constants.color_list)
+            g.shoes_col = random.choice(Constants.color_list)
+            g.gloves_col = random.choice(Constants.color_list)
+
     pass
 
 
 class Group(BaseGroup):
+
+    tshirt_col = models.CharField()
+    hat_col = models.CharField()
+    pants_col = models.CharField()
+    shoes_col = models.CharField()
+    gloves_col = models.CharField()
+
 
     def max(self):
         p1 = self.get_player_by_id(1)
@@ -111,19 +124,19 @@ class Player(BasePlayer):
     def right_col(self):
         n = 0
 
-        if self.tshirt == "red":
+        if self.tshirt == self.group.tshirt_col:
             n = 1
 
-        if self.hat == "orange":
+        if self.hat == self.group.hat_col:
             n = n + 1
 
-        if self.pants == "green":
+        if self.pants == self.group.pants_col:
             n = n + 1
 
-        if self.gloves == "yellow":
+        if self.gloves == self.group.gloves_col:
             n = n + 1
 
-        if self.shoes == "blue":
+        if self.shoes == self.group.shoes_col:
             n = n + 1
 
         return n

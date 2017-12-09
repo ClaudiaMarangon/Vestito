@@ -7,7 +7,9 @@ class Rules(Page):
     def before_next_page(self):
         if self.player.id_in_group == 1:
             self.group.set_roles()
+            self.group.set_hints()
     pass
+
 class Set_Role_Wait_Page(WaitPage):
     def after_all_players_arrive(self):
         pass
@@ -19,6 +21,11 @@ class Network(Page):
             'net1': self.group.network == 1,
             'net2': self.group.network == 2,
             'net3': self.group.network == 3,
+            'hintts': self.player.hint == 'tshirt',
+            'hinth': self.player.hint == 'hat',
+            'hintp': self.player.hint == 'pants',
+            'hints': self.player.hint == 'shoes',
+            'hintg': self.player.hint == 'gloves',
         }
     pass
 

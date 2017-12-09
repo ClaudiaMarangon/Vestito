@@ -54,6 +54,12 @@ class Group(BaseGroup):
             p.role = random.choice(role_list)
             role_list.remove(p.role)
 
+    def set_hints(self):
+        hint_list = ['tshirt', 'hat', 'pants', 'gloves', 'shoes']
+        for p in self.get_players():
+            p.hint = random.choice(hint_list)
+            hint_list.remove(p.hint)
+
     tshirt_col = models.CharField()
     hat_col = models.CharField()
     pants_col = models.CharField()
@@ -128,6 +134,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     role = models.CharField()
+    hint = models.CharField()
+
     tshirt = models.CharField()
     hat = models.CharField()
     pants = models.CharField()

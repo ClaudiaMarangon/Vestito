@@ -2,11 +2,24 @@
 {% load staticfiles otree %}
 
 {% block title %}
-   Network Structure
+   Network Structure and Hint
 {% endblock %}
 
 {% block content %}
-    The following network structure was randomly selected for your group and you have be assigned to node {{ player.role }}.
+    <p> The following network structure was randomly selected for your group and you have be assigned to node {{ player.role }}. </p>
+    {% if hintts %}
+        <p>The color of the <b>T-shirt</b> is <b>{{ group.tshirt_col }}</b></p>
+    {% elif hinth%}
+        <p>The color of the <b>Hat</b> is <b>{{ group.hat_col }}</b></p>
+    {% elif hintp %}
+        <p>The color of the <b>Pants</b> is <b>{{ group.pants_col }}</b></p>
+    {% elif hintg %}
+        <p>The color of the <b>Gloves</b> is <b>{{ group.gloves_col }}</b></p>
+    {% elif hints %}
+        <p>The color of the <b>Shoes</b> is <b>{{ group.shoes_col }}</b></p>
+    {% endif %}
+
+
     {% if net1 %}
         <img src = "{% static "vestito/Network1.png" %}"/>
     {% elif net2 %}

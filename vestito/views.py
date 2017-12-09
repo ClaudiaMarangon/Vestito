@@ -4,6 +4,22 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 class Rules(Page):
+    def before_next_page(self):
+        if self.player.id_in_group == 1:
+            self.group.set_roles()
+    pass
+class Set_Role_Wait_Page(WaitPage):
+    def after_all_players_arrive(self):
+        pass
+
+
+class Network(Page):
+    def vars_for_template(self):
+        return {
+            'net1': self.group.network == 1,
+            'net2': self.group.network == 2,
+            'net3': self.group.network == 3,
+        }
     pass
 
 class vestito(Page):
@@ -11,11 +27,11 @@ class vestito(Page):
     form_fields = ['tshirt', 'hat', 'pants', 'gloves', 'shoes', 'hist']
     def vars_for_template(self):
         return {
-            'player1': self.player.id_in_group==1,
-            'player2': self.player.id_in_group==2,
-            'player3': self.player.id_in_group == 3,
-            'player4': self.player.id_in_group == 4,
-            'player5': self.player.id_in_group == 5,
+            'A': self.player.role == 'A',
+            'B': self.player.role == 'B',
+            'C': self.player.role == 'C',
+            'D': self.player.role == 'D',
+            'E': self.player.role == 'E',
         }
     pass
 
@@ -40,6 +56,8 @@ class resprova(Page):
 
 page_sequence = [
     Rules,
+    Set_Role_Wait_Page,
+    Network,
     vestito,
     ResultsWP,
     Results,

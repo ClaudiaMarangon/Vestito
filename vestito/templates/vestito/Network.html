@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+   Network Structure
+{% endblock %}
+
+{% block content %}
+    The following network structure was randomly selected for your group and you have be assigned to node {{ player.role }}.
+    {% if net1 %}
+        <img src = "{% static "vestito/Network1.png" %}"/>
+    {% elif net2 %}
+        <img src = "{% static "vestito/Network2.png" %}"/>
+    {% else %}
+        <img src = "{% static "vestito/Network3.png" %}"/>
+    {% endif %}
+
+    {% next_button %}
+{% endblock %}
+

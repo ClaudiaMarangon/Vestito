@@ -191,9 +191,13 @@
 				</div>
 				
 			</div>
-    {% if player1%}
-    {% chat channel="1" %}
-    {%  endif %}
+
+    {% for config in player.chat_configs %}
+        <h4>{{ config.label }}</h4>
+        {% chat nickname=player.chat_nickname channel=config.channel %}
+    {% endfor %}
+
+
     {{ form.hist.errors }}
     {% next_button %}
 

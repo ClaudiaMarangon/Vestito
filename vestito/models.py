@@ -28,6 +28,14 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
 
     def creating_session(self):
+
+        self.group_randomly()
+        for g in self.get_groups():
+
+            g.network = random.randint(1, 3)
+
+
+
         for g in self.get_groups():
             g.tshirt_col = random.choice(Constants.color_list)
             g.hat_col = random.choice(Constants.color_list)
@@ -40,12 +48,19 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
 
+    def set_roles(self):
+        role_list = ['A', 'B', 'C', 'D', 'E']
+        for p in self.get_players():
+            p.role = random.choice(role_list)
+            role_list.remove(p.role)
+
     tshirt_col = models.CharField()
     hat_col = models.CharField()
     pants_col = models.CharField()
     shoes_col = models.CharField()
     gloves_col = models.CharField()
 
+    network = models.PositiveIntegerField()
 
     def max(self):
         p1 = self.get_player_by_id(1)
@@ -112,14 +127,13 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    role = models.CharField()
     tshirt = models.CharField()
     hat = models.CharField()
     pants = models.CharField()
     gloves = models.CharField()
     shoes = models.CharField()
     hist = models.TextField()
-
-
 
     def right_col(self):
         n = 0
@@ -140,4 +154,135 @@ class Player(BasePlayer):
             n = n + 1
 
         return n
+
+    def chat_nickname(self):
+        return 'Player {}'.format(self.role)
+
+    def chat_configs(self):
+
+        if self.group.network == 1:
+            configs = []
+            for other in self.get_others_in_group():
+                if other.id_in_group < self.id_in_group:
+                    lower_id, higher_id = other.role, self.role
+                else:
+                    lower_id, higher_id = self.role, other.role
+
+                if (lower_id == 'A' and higher_id == 'B') or (lower_id == 'B' and higher_id == 'A'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'C' and higher_id == 'D') or (lower_id == 'D' and higher_id == 'C'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'D' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'D'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'C' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'C'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+            return configs
+
+        if self.group.network == 2:
+            configs = []
+            for other in self.get_others_in_group():
+                if other.id_in_group < self.id_in_group:
+                    lower_id, higher_id = other.role, self.role
+                else:
+                    lower_id, higher_id = self.role, other.role
+
+                if (lower_id == 'A' and higher_id == 'B') or (lower_id == 'B' and higher_id == 'A'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'A' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'A'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'B' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'B'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'C' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'C'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'D' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'D'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'C' and higher_id == 'D') or (lower_id == 'D' and higher_id == 'C'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+            return configs
+
+        if self.group.network == 3:
+            configs = []
+            for other in self.get_others_in_group():
+                if other.id_in_group < self.id_in_group:
+                    lower_id, higher_id = other.role, self.role
+                else:
+                    lower_id, higher_id = self.role, other.role
+
+                if (lower_id == 'A' and higher_id == 'B') or (lower_id == 'B' and higher_id == 'A'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'B' and higher_id == 'C') or (lower_id == 'C' and higher_id == 'B'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'B' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'B'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'C' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'C'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'D' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'D'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'C' and higher_id == 'D') or (lower_id == 'D' and higher_id == 'C'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+            return configs
     pass

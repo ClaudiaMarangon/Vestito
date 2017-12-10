@@ -4,6 +4,10 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 class Rules(Page):
+
+    def is_displayed(self):
+        return self.round_number==1
+
     def before_next_page(self):
         if self.player.id_in_group == 1:
             self.group.set_roles()
@@ -58,14 +62,36 @@ class Results(Page):
         }
     pass
 
-class resprova(Page):
+class NewRound(Page):
+    def is_displayed(self):
+        return self.round_number > 1
+
+    def before_next_page(self):
+        if self.player.id_in_group == 1:
+            self.group.set_roles()
+            self.group.set_hints()
+    pass
+
+
+class LastRound(Page):
+    def is_displayed(self):
+        return self.round_number==3
+    pass
+
+class FinalPayoff(Page):
+    def is_displayed(self):
+        return self.round_number==3
+
     pass
 
 page_sequence = [
     Rules,
+    NewRound,
     Set_Role_Wait_Page,
     Network,
     vestito,
     ResultsWP,
     Results,
+    LastRound,
+    FinalPayoff,
 ]

@@ -14,7 +14,7 @@
     {% if zero_pay %}
         The other players correctly guessed more colors than you, so your payoff is {{ player.payoff }}.
     {% elif max_pay %}
-        You correctly guessed {{ player.right_col }} colors and the other player got right less colors than you, so you
+        You correctly guessed {{ player.right_col }} colors and all the other players got right less colors than you, so you
         gained {{ player.payoff }}.
     {% else %}
         You correctly guessed {{ player.right_col }} colors, as well as {{ group.n_p_max_less }} other players, so you gained {{ player.payoff }}

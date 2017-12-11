@@ -79,13 +79,10 @@ class Group(BaseGroup):
         return max_right
 
     def n_p_max(self):
-
         n_p_m = 0
-
         for p in self.get_players():
             if p.right_col() == self.max():
                 n_p_m += 1
-
         return n_p_m
 
     def n_p_max_less(self):
@@ -94,37 +91,31 @@ class Group(BaseGroup):
 
     def set_payoffs(self):
 
-        self.n_p_max_less = self.n_p_max() - 1
-
         if self.n_p_max() == 1:
             for p in self.get_players():
                 if p.right_col() == self.max():
                     p.payoff = Constants.maxpay
                 else:
                     p.payoff = Constants.zeropay
-
-        if self.n_p_max() == 2:
+        elif self.n_p_max() == 2:
             for p in self.get_players():
                 if p.right_col() == self.max():
                     p.payoff = Constants.twopay
                 else:
                     p.payoff = Constants.zeropay
-
-        if self.n_p_max == 3:
+        elif self.n_p_max() == 3:
             for p in self.get_players():
                 if p.right_col() == self.max():
                     p.payoff = Constants.threepay
                 else:
                     p.payoff = Constants.zeropay
-
-        if self.n_p_max == 4:
+        elif self.n_p_max() == 4:
             for p in self.get_players():
                 if p.right_col() == self.max():
                     p.payoff = Constants.fourpay
                 else:
                     p.payoff = Constants.zeropay
-
-        if self.n_p_max == 5:
+        elif self.n_p_max() == 5:
             for p in self.get_players():
                 if p.right_col() == self.max():
                     p.payoff = Constants.fivepay
@@ -147,7 +138,7 @@ class Player(BasePlayer):
         n = 0
 
         if self.tshirt == self.group.tshirt_col:
-            n = 1
+            n = n + 1
 
         if self.hat == self.group.hat_col:
             n = n + 1
@@ -293,4 +284,14 @@ class Player(BasePlayer):
                     })
 
             return configs
+
+    def final_payoff(self):
+        if self.round_number==3:
+            def random_round(self):
+                if self.round_number == 3:
+                    rn = random.randint(1, 3)
+                    return rn
+            finalpay = self.in_round(self.random_round()).payoff
+            return finalpay
+
     pass

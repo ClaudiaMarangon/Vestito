@@ -76,6 +76,8 @@ class NewRound(Page):
 class LastRound(Page):
     def is_displayed(self):
         return self.round_number==3
+    def before_next_page(self):
+        self.player.final_payoff()
     pass
 
 class FinalPayoff(Page):

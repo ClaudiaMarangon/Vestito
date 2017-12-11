@@ -285,14 +285,10 @@ class Player(BasePlayer):
 
             return configs
 
-    def random_round(self):
-        if self.round_number == 3:
-            rn = random.randint(1, 3)
-            return rn
-
     def final_payoff(self):
         if self.round_number==3:
-            finalpay = self.in_round(self.random_round()).payoff
+            rn = random.randint(1, 3)
+            finalpay = self.in_round(rn).payoff
             return finalpay
 
     pass

@@ -2,23 +2,22 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    {% if zero_pay %}
-        How Unfortunate!
-    {% else %}
-        Congratulations!
-    {% endif %}
+    Results
 {% endblock %}
 
 {% block content %}
-
+    <p>
     {% if zero_pay %}
-        The other players correctly guessed more colors than you, so your payoff is {{ player.payoff }}.
-    {% elif max_pay %}
-        You correctly guessed {{ player.right_col }} colors and all the other players got right less colors than you, so you
+        You correctly guessed {{ player.right_col }} colors and got {{ player.wrong_col }} colors wrong, but the other players correctly guessed
+        more colors than you, so your payoff is {{ player.payoff }}.
+    {% elif max_pay and max_col %}
+        You correctly guessed {{ player.right_col }} colors and got {{ player.wrong_col }} colors wrong, also all the other players got right less colors than you, so you
         gained {{ player.payoff }}.
     {% else %}
-        You correctly guessed {{ player.right_col }} colors, as well as {{ group.n_p_max_less }} other players, so you gained {{ player.payoff }}
+        You correctly guessed {{ player.right_col }} colors, as well as {{ group.n_p_max_less }} other players, and got {{ player.wrong_col }} colors wrong
+        so you gained {{ player.payoff }}.
     {% endif %}
+    </p>
 
     {% next_button %}
 {% endblock %}

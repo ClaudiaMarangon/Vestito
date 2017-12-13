@@ -34,6 +34,10 @@ class Network(Page):
     pass
 
 class vestito(Page):
+
+    def get_timeout_seconds(self):
+        return self.session.config['my_page_timeout_seconds']
+
     form_model = models.Player
     form_fields = ['tshirt', 'hat', 'pants', 'gloves', 'shoes', 'hist']
     def vars_for_template(self):
@@ -52,6 +56,13 @@ class vestito(Page):
             'hints': self.player.hint == 'shoes',
             'hintg': self.player.hint == 'gloves',
         }
+
+    timeout_submission = {'tshirt': True}
+    timeout_submission = {'hat': True}
+    timeout_submission = {'pants': True}
+    timeout_submission = {'gloves': True}
+    timeout_submission = {'shoes': True}
+    timeout_submission = {'hist': True}
     pass
 
 class ResultsWP(WaitPage):
@@ -65,8 +76,9 @@ class ResultsWP(WaitPage):
 class Results(Page):
     def vars_for_template(self):
         return {
-            'zero_pay': self.player.payoff == Constants.zeropay,
-            'max_pay': self.player.payoff == Constants.maxpay,
+            'zero_pay': self.player.right_col() < self.group.max(),
+            'max_pay': self.group.n_p_max() == 1,
+            'max_col': self.player.right_col() == self.group.max()
         }
     pass
 

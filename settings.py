@@ -105,6 +105,7 @@ SESSION_CONFIGS = [
          'display_name': 'vestito',
          'num_demo_participants': 5,
          'app_sequence': ['vestito'],
+         'my_page_timeout_seconds': 60,
      }
 ]
 

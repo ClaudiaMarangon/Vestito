@@ -120,6 +120,9 @@ class Group(BaseGroup):
                 if p.right_col() == self.max():
                     p.payoff = Constants.fivepay
 
+        for p in self.get_players():
+            p.payoff = p.payoff + p.right_col()*10 - 5 * (5 - p.right_col() - p.no_col())
+
     pass
 
 
@@ -127,12 +130,24 @@ class Player(BasePlayer):
     role = models.CharField()
     hint = models.CharField()
 
-    tshirt = models.CharField()
-    hat = models.CharField()
-    pants = models.CharField()
-    gloves = models.CharField()
-    shoes = models.CharField()
-    hist = models.TextField()
+    tshirt = models.CharField(
+        blank=True
+    )
+    hat = models.CharField(
+        blank=True
+    )
+    pants = models.CharField(
+        blank=True
+    )
+    gloves = models.CharField(
+        blank=True
+    )
+    shoes = models.CharField(
+        blank=True
+    )
+    hist = models.TextField(
+        blank = True
+    )
 
     def right_col(self):
         n = 0
@@ -152,6 +167,30 @@ class Player(BasePlayer):
         if self.shoes == self.group.shoes_col:
             n = n + 1
 
+        return n
+
+    def no_col(self):
+        n = 0
+
+        if self.tshirt == '':
+            n = n + 1
+
+        if self.hat == '':
+            n = n + 1
+
+        if self.pants == '':
+            n = n + 1
+
+        if self.gloves == '':
+            n = n + 1
+
+        if self.shoes == '':
+            n = n + 1
+
+        return n
+
+    def wrong_col(self):
+        n = 5 - self.right_col() - self.no_col()
         return n
 
     def chat_nickname(self):

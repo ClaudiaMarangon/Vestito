@@ -43,6 +43,14 @@ class vestito(Page):
             'C': self.player.role == 'C',
             'D': self.player.role == 'D',
             'E': self.player.role == 'E',
+            'net1': self.group.network == 1,
+            'net2': self.group.network == 2,
+            'net3': self.group.network == 3,
+            'hintts': self.player.hint == 'tshirt',
+            'hinth': self.player.hint == 'hat',
+            'hintp': self.player.hint == 'pants',
+            'hints': self.player.hint == 'shoes',
+            'hintg': self.player.hint == 'gloves',
         }
     pass
 
@@ -90,7 +98,6 @@ page_sequence = [
     Rules,
     NewRound,
     Set_Role_Wait_Page,
-    Network,
     vestito,
     ResultsWP,
     Results,

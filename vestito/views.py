@@ -35,8 +35,7 @@ class Network(Page):
 
 class vestito(Page):
 
-    def get_timeout_seconds(self):
-        return self.session.config['my_page_timeout_seconds']
+    timeout_seconds = 900
 
     form_model = models.Player
     form_fields = ['tshirt', 'hat', 'pants', 'gloves', 'shoes', 'hist']
@@ -57,12 +56,7 @@ class vestito(Page):
             'hintg': self.player.hint == 'gloves',
         }
 
-    timeout_submission = {'tshirt': True}
-    timeout_submission = {'hat': True}
-    timeout_submission = {'pants': True}
-    timeout_submission = {'gloves': True}
-    timeout_submission = {'shoes': True}
-    timeout_submission = {'hist': True}
+
     pass
 
 class ResultsWP(WaitPage):

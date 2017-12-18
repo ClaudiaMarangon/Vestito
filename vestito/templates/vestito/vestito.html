@@ -274,7 +274,7 @@
 
         var d = new Date();
         var timestamp = document.getElementById('time_stamp_entered').value;
-        var newtime = d.getTime()
+        var newtime = d.getTime()/1000
         timestamp = timestamp + newtime + "///"
         document.getElementById('time_stamp_entered').value = timestamp.toString()
 
@@ -285,7 +285,7 @@
 	    var guanti = document.getElementById("guanti").value;
 	    var scarpe = document.getElementById("scarpe").value;
         var newRow = "Tshirt: " + maglia + ", " + "hat: " + cappello + ", " + "pants: " + pantaloni + ", " + "gloves: " + guanti + ", " + "shoes: " + scarpe
-        history = history + newRow + "///"
+        history = history + newRow + " /// "
 
         document.getElementById('histor').value = history.toString()
     }

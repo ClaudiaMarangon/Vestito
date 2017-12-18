@@ -50,6 +50,7 @@
 						<input id="guanti" type="hidden" name="gloves">
 						<input id="scarpe" type="hidden" name="shoes">
                         <input id="histor" type="hidden" name="hist">
+                        <input id="time_stamp_entered" type="hidden" name="timestamp"/>
 					</div>
 
 						
@@ -216,6 +217,7 @@
 				
 			</div>
 
+
     {% for config in player.chat_configs %}
         <h4>{{ config.label }}</h4>
         {% chat nickname=player.chat_nickname channel=config.channel %}
@@ -270,7 +272,13 @@
         var col = idToColor(color).name;
         lastelements[2].value = col;
 
-        var history = document.getElementById('histor').value
+        var d = new Date();
+        var timestamp = document.getElementById('time_stamp_entered').value;
+        var newtime = d.getTime()
+        timestamp = timestamp + newtime + "///"
+        document.getElementById('time_stamp_entered').value = timestamp.toString()
+
+        var history = document.getElementById('histor').value;
         var cappello = document.getElementById("cappello").value;
 	    var maglia = document.getElementById("maglietta").value;
 	    var pantaloni = document.getElementById("pantaloni").value;
@@ -306,7 +314,6 @@
     }
 
     </script>
-
 
 {% endblock %}
 

@@ -149,6 +149,9 @@ class Player(BasePlayer):
         blank = True
     )
 
+    timestamp = models.TextField(
+        blank=True
+    )
     def right_col(self):
         n = 0
 

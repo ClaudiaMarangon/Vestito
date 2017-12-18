@@ -38,7 +38,7 @@ class vestito(Page):
     timeout_seconds = 900
 
     form_model = models.Player
-    form_fields = ['tshirt', 'hat', 'pants', 'gloves', 'shoes', 'hist']
+    form_fields = ['tshirt', 'hat', 'pants', 'gloves', 'shoes', 'hist', 'timestamp']
     def vars_for_template(self):
         return {
             'A': self.player.role == 'A',

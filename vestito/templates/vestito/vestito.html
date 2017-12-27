@@ -16,7 +16,7 @@
 
 {% block content %}
 
-        <p> The following network structure was randomly selected for your group and you have be assigned to node {{ player.role }}. </p>
+        <p> The following network structure was randomly selected for your group and you have been assigned to node {{ player.role }}. </p>
     {% if hintts %}
         <p>The color of the <b>T-shirt</b> is <b>{{ group.tshirt_col }}</b></p>
     {% elif hinth%}
@@ -309,8 +309,6 @@
             return {name: "white", value:"#ffffff"}
         if (color == "9")
             return {name: "black", value:"#000000"}
-        if (color == "10")
-            return {name: "grey", value:"#9e9e9e"}
     }
 
     </script>

@@ -23,7 +23,7 @@ class Constants(BaseConstants):
     fivepay = 20
     zeropay = 0
     color_list = ['red', 'orange', 'yellow', 'blue', 'lightblue',
-                  'purple', 'green', 'white', 'grey', 'black']
+                  'purple', 'green', 'white', 'black']
 
 class Subsession(BaseSubsession):
 
@@ -228,6 +228,12 @@ class Player(BasePlayer):
                     })
 
                 if (lower_id == 'C' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'C'):
+                    configs.append({
+                        'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
+                        'label': 'Chat with {}'.format(other.chat_nickname())
+                    })
+
+                if (lower_id == 'B' and higher_id == 'E') or (lower_id == 'E' and higher_id == 'B'):
                     configs.append({
                         'channel': '{}-{}-{}'.format(self.group.id, lower_id, higher_id),
                         'label': 'Chat with {}'.format(other.chat_nickname())

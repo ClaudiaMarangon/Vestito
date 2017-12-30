@@ -75,13 +75,13 @@ class Group(BaseGroup):
         p4 = self.get_player_by_id(4)
         p5 = self.get_player_by_id(5)
 
-        max_right = max(p1.right_col(), p2.right_col(), p3.right_col(), p4.right_col(), p5.right_col())
-        return max_right
+        max_pp = max(p1.partial_pay(), p2.partial_pay(), p3.partial_pay(), p4.partial_pay(), p5.partial_pay())
+        return max_pp
 
     def n_p_max(self):
         n_p_m = 0
         for p in self.get_players():
-            if p.right_col() == self.max():
+            if p.partial_pay() == self.max():
                 n_p_m += 1
         return n_p_m
 
@@ -93,35 +93,35 @@ class Group(BaseGroup):
 
         if self.n_p_max() == 1:
             for p in self.get_players():
-                if p.right_col() == self.max():
+                if p.partial_pay() == self.max():
                     p.payoff = Constants.maxpay
                 else:
                     p.payoff = Constants.zeropay
         elif self.n_p_max() == 2:
             for p in self.get_players():
-                if p.right_col() == self.max():
+                if p.partial_pay() == self.max():
                     p.payoff = Constants.twopay
                 else:
                     p.payoff = Constants.zeropay
         elif self.n_p_max() == 3:
             for p in self.get_players():
-                if p.right_col() == self.max():
+                if p.partial_pay() == self.max():
                     p.payoff = Constants.threepay
                 else:
                     p.payoff = Constants.zeropay
         elif self.n_p_max() == 4:
             for p in self.get_players():
-                if p.right_col() == self.max():
+                if p.partial_pay() == self.max():
                     p.payoff = Constants.fourpay
                 else:
                     p.payoff = Constants.zeropay
         elif self.n_p_max() == 5:
             for p in self.get_players():
-                if p.right_col() == self.max():
+                if p.partial_pay() == self.max():
                     p.payoff = Constants.fivepay
 
         for p in self.get_players():
-            p.payoff = p.payoff + p.right_col()*10 - 5 * (5 - p.right_col() - p.no_col())
+            p.payoff = p.payoff + p.partial_pay()
 
     pass
 
@@ -195,6 +195,10 @@ class Player(BasePlayer):
     def wrong_col(self):
         n = 5 - self.right_col() - self.no_col()
         return n
+
+    def partial_pay(self):
+        pp = 10*self.right_col() - 5 * (5 - self.right_col() - self.no_col())
+        return pp
 
     def chat_nickname(self):
         return 'Player {}'.format(self.role)

@@ -70,9 +70,9 @@ class ResultsWP(WaitPage):
 class Results(Page):
     def vars_for_template(self):
         return {
-            'zero_pay': self.player.right_col() < self.group.max(),
+            'zero_pay': self.player.partial_pay() < self.group.max(),
             'max_pay': self.group.n_p_max() == 1,
-            'max_col': self.player.right_col() == self.group.max()
+            'max_col': self.player.partial_pay() == self.group.max()
         }
     pass
 

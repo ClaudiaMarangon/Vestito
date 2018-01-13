@@ -22,6 +22,7 @@ class Constants(BaseConstants):
     fourpay = 25
     fivepay = 20
     zeropay = 0
+
     color_list = ['red', 'orange', 'yellow', 'blue', 'lightblue',
                   'purple', 'green', 'white', 'black']
 
@@ -30,11 +31,24 @@ class Subsession(BaseSubsession):
     def creating_session(self):
 
         self.group_randomly()
-        for g in self.get_groups():
+        if self.round_number == 1:
+            n_list1 = [1, 1, 2, 2, 3]
+            for g in self.get_groups():
+                g.network = random.choice(n_list1)
+                n_list1.remove(g.network)
 
-            g.network = random.randint(1, 3)
 
+        if self.round_number == 2:
+            n_list2 = [1, 3, 2, 2, 3]
+            for g in self.get_groups():
+                g.network = random.choice(n_list2)
+                n_list2.remove(g.network)
 
+        if self.round_number == 3:
+            n_list3 = [1, 1, 3, 2, 3]
+            for g in self.get_groups():
+                g.network = random.choice(n_list3)
+                n_list3.remove(g.network)
 
         for g in self.get_groups():
             g.tshirt_col = random.choice(Constants.color_list)

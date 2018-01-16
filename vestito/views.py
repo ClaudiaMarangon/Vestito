@@ -74,6 +74,13 @@ class Results(Page):
             'max_pay': self.group.n_p_max() == 1,
             'max_col': self.player.partial_pay() == self.group.max()
         }
+    def before_next_page(self):
+        if self.round_number == 1:
+            self.player.participant.vars['payoff1'] = self.player.payoff
+        elif self.round_number == 2:
+            self.player.participant.vars['payoff2'] = self.player.payoff
+        else:
+            self.player.participant.vars['payoff3'] = self.player.payoff
     pass
 
 class NewRound(Page):
@@ -87,18 +94,6 @@ class NewRound(Page):
     pass
 
 
-class LastRound(Page):
-    def is_displayed(self):
-        return self.round_number==3
-    def before_next_page(self):
-        self.player.final_payoff()
-    pass
-
-class FinalPayoff(Page):
-    def is_displayed(self):
-        return self.round_number==3
-
-    pass
 
 page_sequence = [
     Rules,
@@ -107,6 +102,4 @@ page_sequence = [
     vestito,
     ResultsWP,
     Results,
-    LastRound,
-    FinalPayoff,
 ]

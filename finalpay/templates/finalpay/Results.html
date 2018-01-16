@@ -2,12 +2,13 @@
 {% load staticfiles otree %}
 
 {% block title %}
-   Final Payoff
+    Final Payoff
 {% endblock %}
 
 {% block content %}
-    <p>Your final payoff is {{ player.final_payoff }}.</p>
-
+    <p>Your final payoff was randomly chosen from one of the three rounds you played.</p>
+    <p>You earned {{ player.payoff }}</p>
     {% next_button %}
-
 {% endblock %}
+
+

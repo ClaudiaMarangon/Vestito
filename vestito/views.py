@@ -3,6 +3,14 @@ from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+class Payment_Info(Page):
+    def is_displayed(self):
+        return self.round_number==1
+
+    form_model = models.Player
+    form_fields = ['name', 'surname', 'mail']
+    pass
+
 class Rules(Page):
 
     def is_displayed(self):
@@ -96,6 +104,7 @@ class NewRound(Page):
 
 
 page_sequence = [
+    Payment_Info,
     Rules,
     NewRound,
     Set_Role_Wait_Page,

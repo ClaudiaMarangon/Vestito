@@ -141,6 +141,17 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    name = models.CharField(
+        verbose_name="Please enter your First Name:"
+    )
+
+    surname = models.CharField(
+        verbose_name="Please enter your Last Name:"
+    )
+
+    mail = models.CharField(
+        verbose_name="Please enter the email adress where you want to receive the payment"
+    )
     role = models.CharField()
     hint = models.CharField()
 

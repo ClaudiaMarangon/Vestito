@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+    <p>
+    {% if zero_pay %}
+        You correctly guessed {{ player.right_col }} colors and got {{ player.wrong_col }} colors wrong therefore your
+        partial payoff is {{ player.partial_pay }}, but the other players obtained an higher partial payoff, so your
+        payoff is {{ player.payoff }}.
+    {% elif max_pay and max_col %}
+        You correctly guessed {{ player.right_col }} colors and got {{ player.wrong_col }} colors wrong therefore your
+        partial payoff is {{ player.partial_pay }}, also all the other players obtained a lower partial payoff, so you
+        gained {{ player.payoff }}.
+    {% else %}
+        You correctly guessed {{ player.right_col }} colors, got {{ player.wrong_col }} colors wrong and obtained a
+        partial payoff of {{ player.partial_pay }} as well as {{ group.n_p_max_less }} other players, so you gained {{ player.payoff }}.
+    {% endif %}
+    </p>
+
+    {% next_button %}
+{% endblock %}
+
+

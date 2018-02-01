@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+
+
+{% block content %}
+    <p>
+        In this game you will play against 4 other players:
+        <ol>
+            <li>You and your 4 competitors will be randomly assigned to a mysterious character.
+            You have to guess the colors of the clothes of the character you are assigned to.</li>
+            <li>You will receive an hint about the color of one of the clothes of your mysterious character.</li>
+            <li>You will receive some information on one or more players of your group.</li>
+            <li>Careful! You can see the hint <b>just once</b>!</li>
+            <li>You have <i>15 minutes</i> to change your choices about the colors. During this time
+            you can communicate with your competitors, if you want to.</li>
+            <li>You will gain 10 points for each correct color, you will lose 5 points for each color you guess wrong and
+            0 points for each piece of clothing that you leave grey.</li>
+            <li>There is a bonus of 100 points which will be divided among the members of the group
+            who will have guessed correctly the highest number of colors. That is, you will win:
+                <ul>
+                    <li>100 points if all the other participants will have correctly guessed less colors than you</li>
+                    <li>50 points if just another player will have correctly guess as many colors as you, and no one will have guessed more</li>
+                    <li>33 points if two more players will have correctly guess as many colors as you, and no one will have guessed more</li>
+                    <li>25 points if three more players will have correctly guess as many colors as you, and no one will have guessed more</li>
+                    <li>20 points if you have correctly guessed the same number of colors as the other participants</li>
+                </ul>
+            </li>
+            <li>At the end of each round you will be asked to answer two questions about that round.</li>
+            <li>You will play a total number of three rounds.</li>
+            <li>The game will end at the end of the third round. One of the three rounds will be randomly selected to calculate
+            the final payoff. You will get 10 cents for each point gained in the extracted round.</li>
+        </ol>
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

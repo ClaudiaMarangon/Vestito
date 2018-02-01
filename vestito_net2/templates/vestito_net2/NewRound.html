@@ -1,0 +1,13 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+   Next Round
+{% endblock %}
+
+{% block content %}
+    <p>Congratulations, you finished the round!</p>
+    <p>You will now be randomly assigned to a new group and will repeat the game.</p>
+    {% next_button %}
+
+{% endblock %}

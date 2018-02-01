@@ -101,12 +101,28 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-         'name': 'vestito',
-         'display_name': 'vestito',
+         'name': 'vestito_net3',
+         'display_name': 'Vestitito Network 3',
          'num_demo_participants': 5,
-         'app_sequence': ['vestito', 'finalpay'],
+         'app_sequence': ['vestito_net3', 'finalpay'],
          'my_page_timeout_seconds': 60,
      },
+
+    {
+        'name': 'vestito_net1',
+        'display_name': 'Vestitito Network 1',
+        'num_demo_participants': 5,
+        'app_sequence': ['vestito_net1', 'finalpay'],
+        'my_page_timeout_seconds': 60,
+    },
+
+    {
+        'name': 'vestito_net2',
+        'display_name': 'Vestitito Network 2',
+        'num_demo_participants': 5,
+        'app_sequence': ['vestito_net2', 'finalpay'],
+        'my_page_timeout_seconds': 60,
+    },
 
     {
         'name': 'finalpay',

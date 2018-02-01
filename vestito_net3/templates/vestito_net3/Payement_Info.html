@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Payment Information
+{% endblock %}
+
+{% block content %}
+    <p>Your payment will be in Amazon Gift Cards, therefore before starting the game we need some information about yourself:</p>
+
+    <p>
+        {% for field in form %}
+            {% formfield field %}
+        {% endfor %}
+    </p>
+
+    <p>
+        Your name, student ID and email address are checked for payment purposes alone. In the study itself and in the
+        final database, we do not record any identifying information, all data are analyzed and stored anonymously,
+        and are kept on secure servers and password-protected computers.
+    </p>
+
+    <p>
+        The currency of this game are tokens, but at the end each token will be worth X Euros for your final payment.
+        Also, remember that you will receive also Euros Y as a show up fee for your participation.
+    </p>
+
+    {% next_button %}
+{% endblock %}

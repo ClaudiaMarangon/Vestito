@@ -1,0 +1,75 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    The Money Request Game
+{% endblock %}
+
+{% block styles %}
+<link href="{% static "money_request/jquery-ui/jquery-ui.min.css" %}" rel="stylesheet">
+<style type="text/css">
+    .bid-slider {
+        margin: 1.5em auto;
+        width: 70%;
+    }
+
+    .bid {
+        text-align: center;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <p>
+        You have been randomly paired with another participant to play the Money Request Game.
+        Each player requests an amount of tokens. The amount must be an integer from 1 to 10 tokens (inclusive). Each
+        player will receive the amount they request. <b>BUT:</b> A player will receive an <b>additional amount of 10 tokens</b>
+        if he/she asks for <b>exactly one token less</b> than the other player.
+    </p>
+
+    <p>
+        With probability 0.04 you will not be matched with anyone and you will earn the amount you requested plus 10 tokens.
+    </p>
+
+    <p>
+        You will find out your partner’s choice and therefore your payoff at the end of the experiment.
+    </p>
+
+        <div class="form-group required">
+        <label class="control-label" for="id_bid_amount">
+            What amount of money would you request?</label>
+        <div class="controls">
+            <input type="hidden" name="choice" id="id_bid_amount" value="0">
+            <div class="bid-slider"></div>
+            <div class="bid">Your choice: <strong><span class="bid-value"></span></strong></div>
+        </div>
+    </div>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static "money_request/jquery-ui/jquery-ui.min.js" %}"></script>
+<script>
+jQuery(document).ready(function ($) {
+    var input = $('#id_bid_amount');
+
+    $('.bid-slider').slider({
+        min: 0,
+        max: 10,
+        slide: function (event, ui) {
+            input.val(ui.value);
+            updateBidValue();
+        },
+    });
+
+    function updateBidValue() {
+        $('.bid-value').text(input.val());
+    }
+
+    updateBidValue();
+});
+</script>
+{% endblock %}

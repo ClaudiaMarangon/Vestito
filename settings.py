@@ -135,6 +135,14 @@ SESSION_CONFIGS = [
     },
 
     {
+        'name': 'money_request',
+        'display_name': 'Money Request Game',
+        'num_demo_participants': 25,
+        'app_sequence': ['money_request'],
+        'my_page_timeout_seconds': 60,
+    },
+
+    {
         'name': 'finalpay',
         'display_name': 'finalpay',
         'num_demo_participants': 1,

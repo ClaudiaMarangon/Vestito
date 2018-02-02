@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Circle Task
+{% endblock %}
+
+{% block content %}
+    <p>
+        Now you will be paired with a different partner to the ones you previously played with.
+        You have 10 euros, and you must choose how to divide it between you and your partner.
+    </p>
+    <p>
+        Payoffs are distributed according to the function reported in the following graph,
+        where you can see on the X axis your payoff and on the Y axis your partner's.
+    </p>
+    <p>
+        At the end of the experiment, the computer will randomly choose whether to implement your choice or your partner’s
+        choice for how to divide the 10 euros, and you will be paid according to the chosen division.
+    </p>
+    <p>
+        Please, select the point on the circle that will determine the payoffs.
+    </p>
+    {% include 'circle_task/Circle graph2.html' %}
+
+    {% next_button %}
+{% endblock %}

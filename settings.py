@@ -57,6 +57,8 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'EU'
 USE_POINTS = True
+POINTS_DECIMAL_PLACES = 2
+POINTS_CUSTOM_NAME = 'tokens'
 
 
 # e.g. en, de, fr, it, ja, zh-hans
@@ -121,6 +123,14 @@ SESSION_CONFIGS = [
         'display_name': 'Vestitito Network 2',
         'num_demo_participants': 5,
         'app_sequence': ['vestito_net2', 'finalpay'],
+        'my_page_timeout_seconds': 60,
+    },
+
+    {
+        'name': 'circle_task',
+        'display_name': 'Circle Task',
+        'num_demo_participants': 25,
+        'app_sequence': ['circle_task'],
         'my_page_timeout_seconds': 60,
     },
 

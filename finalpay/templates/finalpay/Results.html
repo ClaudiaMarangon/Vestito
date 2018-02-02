@@ -8,6 +8,7 @@
 {% block content %}
     <p>Your final payoff was randomly chosen from one of the three rounds you played.</p>
     <p>You earned {{ player.payoff }}</p>
+    <p>Your payoff from the Circle Task is {{ participant.circlet_payoff }}</p>
     {% next_button %}
 {% endblock %}
 

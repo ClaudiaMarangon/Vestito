@@ -4,22 +4,28 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class MyPage(Page):
+
+
+class Choice(Page):
+    form_model = models.Player
+    form_fields = ['choice', 'otherpay']
     pass
 
-
 class ResultsWaitPage(WaitPage):
-
     def after_all_players_arrive(self):
-        pass
-
+        self.group.set_payoffs()
+    pass
 
 class Results(Page):
+    def vars_for_template(self):
+        return {
+            'P_choice': self.player.payoff == self.player.choice,
+        }
     pass
 
 
 page_sequence = [
-    MyPage,
+    Choice,
     ResultsWaitPage,
-    Results
+    Results,
 ]

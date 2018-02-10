@@ -23,18 +23,17 @@
 {% block content %}
     <p>
         You have been randomly paired with another participant to play the Money Request Game.
-        Each player requests an amount of tokens. The amount must be an integer from 1 to 10 tokens (inclusive). Each
-        player will receive the amount they request. <b>BUT:</b> A player will receive an <b>additional amount of 10 tokens</b>
+        Each player requests an amount of tokens. The amount must be an integer from 1 to 20 tokens (inclusive).
+        Each player will receive the amount they request. <b>BUT</b>: A player will receive an <b>additional amount of 20 tokens</b>
         if he/she asks for <b>exactly one token less</b> than the other player.
+        You will find out your partner’s choice and therefore your payoff at the end of the experiment.
+
     </p>
 
     <p>
         With probability 0.04 you will not be matched with anyone and you will earn the amount you requested plus 10 tokens.
     </p>
 
-    <p>
-        You will find out your partner’s choice and therefore your payoff at the end of the experiment.
-    </p>
 
         <div class="form-group required">
         <label class="control-label" for="id_bid_amount">
@@ -58,7 +57,7 @@ jQuery(document).ready(function ($) {
 
     $('.bid-slider').slider({
         min: 0,
-        max: 10,
+        max: 20,
         slide: function (event, ui) {
             input.val(ui.value);
             updateBidValue();

@@ -16,7 +16,7 @@ class Constants(BaseConstants):
     name_in_url = 'circle_task'
     players_per_group = 25
     num_rounds = 1
-    endowmentsqr = float(100)
+    endowmentsqr = float(400)
     ran_numb = random.randrange(1,2)
 
 

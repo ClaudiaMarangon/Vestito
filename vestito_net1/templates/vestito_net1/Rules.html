@@ -2,39 +2,140 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Instructions
+    Welcome!
 {% endblock %}
 
 
 
 {% block content %}
     <p>
-        In this game you will play against 4 other players:
-        <ol>
-            <li>You and your 4 competitors will be randomly assigned to a mysterious character.
-            You have to guess the colors of the clothes of the character you are assigned to.</li>
-            <li>You will receive an hint about the color of one of the clothes of your mysterious character.</li>
-            <li>You will receive some information on one or more players of your group.</li>
-            <li>Careful! You can see the hint <b>just once</b>!</li>
-            <li>You have <i>15 minutes</i> to change your choices about the colors. During this time
-            you can communicate with your competitors, if you want to.</li>
-            <li>You will gain 10 points for each correct color, you will lose 5 points for each color you guess wrong and
-            0 points for each piece of clothing that you leave grey.</li>
-            <li>There is a bonus of 100 points which will be divided among the members of the group
-            who will have guessed correctly the highest number of colors. That is, you will win:
-                <ul>
-                    <li>100 points if all the other participants will have correctly guessed less colors than you</li>
-                    <li>50 points if just another player will have correctly guess as many colors as you, and no one will have guessed more</li>
-                    <li>33 points if two more players will have correctly guess as many colors as you, and no one will have guessed more</li>
-                    <li>25 points if three more players will have correctly guess as many colors as you, and no one will have guessed more</li>
-                    <li>20 points if you have correctly guessed the same number of colors as the other participants</li>
-                </ul>
+        For most of the experiment, you will play a simple game called VestiTito, which is a game played in groups of
+        five players. The goal of the game is to correctly guess the colors of the clothes of a mysterious character.
+        There are five pieces of clothing that will appear grey at the start of the game and need to be colored. The
+        payment reward depends on the number of colors correctly guessed by you and the other members of your group. In
+        order to guess the colors you will need to rely on a hint you will receive and on the communication with the
+        other members of the group. Each player will indeed receive a different piece of information regarding one of
+        the colors. In total there are five colors that you can try to guess and five pieces of information will be
+        distributed among the members of the group. Remember that if you are not confident regarding one of the colors
+        you can leave it grey. The total score is obtained by adding up two components:
+        <ul>
+            <li>
+                A <b>preliminary</b> score that depends on the number of colors correctly guessed and on the number of mistakes.
             </li>
-            <li>At the end of each round you will be asked to answer two questions about that round.</li>
-            <li>You will play a total number of three rounds.</li>
-            <li>The game will end at the end of the third round. One of the three rounds will be randomly selected to calculate
-            the final payoff. You will get 10 cents for each point gained in the extracted round.</li>
-        </ol>
+            <li>
+                A <b>bonus</b> given to the player with the highest preliminary score (or shared among the players with the
+                highest preliminary score).
+            </li>
+        </ul>
+    </p>
+
+    <p>
+        Specifically, the <b>preliminary score</b> will be calculated as follows:
+        <ul>
+            <li>
+                You will receive <b>10 tokens</b> for every color <b>correctly</b> guessed.
+            </li>
+            <li>
+                You will lose <b>5 tokens</b> for every <b>wrong</b> guess.
+            </li>
+            <li>
+                You will receive <b>0 tokens</b> for every piece of clothing left <b>grey</b>.
+            </li>
+        </ul>
+    </p>
+
+    <p>
+        The <b>bonus</b> consists in a total of <b>100 tokens</b>, distributed among the players in the group that got the highest
+        preliminary score:
+        <ul>
+            <li>
+                You will receive a bonus of <b>100 tokens</b> if your preliminary score will be higher than the score of any
+                other member of your group.
+            </li>
+            <li>
+                You will receive a bonus of <b>50 tokens</b> in case your preliminary score is the same as the one obtained by
+                one other member of the group and higher than the scores obtained by the rest of the group.
+            </li>
+            <li>
+                You will receive a bonus of <b>33 tokens</b> in case your preliminary score is the same as the one obtained by
+                two other members of the group and higher than the scores obtained by the rest of the group.
+            </li>
+            <li>
+                You will receive a bonus of <b>25 tokens</b> in case your preliminary score is the same as the one obtained by
+                three other members of the group and higher than the score obtained by the last member of the group.
+            </li>
+            <li>
+                You will receive a bonus of <b>20 tokens</b> in case your preliminary score is the same as the score of any
+                other member of the group.
+            </li>
+            <li>
+                You will receive a bonus of <b>0 tokens</b> in case there is another member of the group with a preliminary
+                score that is higher than yours.
+            </li>
+        </ul>
+    </p>
+
+    <p>
+        On the top of the page you will be able to see two pieces of information. The first one is a hint regarding one
+        of the five colors you need to guess. For example, if you see “The color of the Hat is Red” you know for sure
+        that the right guess for the hat is the color red. The second piece of information concerns the group of people
+        you will be playing with. You will see a picture representing a network. In the network, each node
+        (A, B, C, D, and E) represents a member of the group. Moreover, two nodes are connected by a link if they can
+        chat during the round. For example, you could receive the following message:
+    </p>
+
+    <p>
+        <i>The following network structure was randomly selected for your group and you have been assigned to node A.</i>
+    </p>
+
+    <img src = "{% static "vestito/Network1.png" %}"/>
+
+    <p>
+        This will tell you the following:
+        <ul>
+            <li>
+                Your position in the network is A, therefore you will be able to chat with player B.
+            </li>
+            <li>
+                Player B will be able to chat with you and with player E.
+            </li>
+            <li>
+                Player C will be able to chat with player D and player E.
+            </li>
+            <li>
+                Player D will be able to chat with player C and player E.
+            </li>
+            <li>
+                Player E will be able to chat with player B, player C, and player D.
+            </li>
+        </ul>
+    </p>
+
+    <p>
+        The one above is just an example, you may be assigned to a different position to a network with different links
+        as the ones in the picture.
+    </p>
+
+    <p>
+        Below the information regarding the network you will see the mysterious character. Initially all clothes will
+        be colored grey. It is possible to change color by clicking on the piece of clothing and then selecting the new
+        choice. You will be able to change colors as many times as you wish during the round, this will not affect your
+        score. The only combination of colors that will be used to calculate the score is the last combination selected
+        at the end of the round.
+    </p>
+
+    <p>
+        The bottom of the page contains the chat. You will be able to communicate with other players according to the
+        network, as described above. If you want, you can use the chat to exchange information with other players concerning
+        the colors. You are free to write the messages you prefer, and this will not affect your score. The only
+        limitations are about the language and about anonymity. Please write your messages in English and make sure you
+        do not reveal anything about your identity during the game.
+    </p>
+
+    <p>
+        The same game will be played four times in rounds of 10 minutes each and with different groups of players, so
+        that you won’t be interacting more than once with the same person. Your payoffs for each round will be added up
+        and will contribute to your final earnings at the end of the experiment.
     </p>
 
     {% next_button %}

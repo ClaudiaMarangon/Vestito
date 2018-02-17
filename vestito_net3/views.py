@@ -146,6 +146,10 @@ class Practice_end(Page):
 
     pass
 
+class End(Page):
+    def is_displayed(self):
+        return self.round_number==4
+
 page_sequence = [
     Payement_Info,
     Rules,
@@ -157,4 +161,5 @@ page_sequence = [
     vestito,
     ResultsWP,
     Results,
+    End,
 ]

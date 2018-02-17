@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Survey: Background Information
+{% endblock %}
+
+{% block content %}
+
+    <p>Please, now, answer the following questions.</p>
+
+    {% for field in form %}
+        {% formfield field %}
+    {% endfor %}
+
+
+    {% next_button %}
+
+{% endblock %}

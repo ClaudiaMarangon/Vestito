@@ -27,5 +27,5 @@ class Results(Page):
 page_sequence = [
     Choice,
     ResultsWaitPage,
-    Results,
+    #Results,
 ]

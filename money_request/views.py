@@ -24,5 +24,5 @@ class Results(Page):
 page_sequence = [
     Instructions,
     ResultsWaitPage,
-    Results
+    #Results
 ]

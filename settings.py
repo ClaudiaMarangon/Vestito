@@ -143,11 +143,21 @@ SESSION_CONFIGS = [
     },
 
     {
+        'name': 'questionnaire',
+        'display_name': 'Questionnaire',
+        'num_demo_participants': 1,
+        'app_sequence': ['questionnaire'],
+        'my_page_timeout_seconds': 60,
+    },
+
+    {
         'name': 'finalpay',
         'display_name': 'finalpay',
         'num_demo_participants': 1,
         'app_sequence': ['finalpay'],
     }
+
+
 ]
 
 # anything you put after the below line will override

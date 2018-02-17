@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Comments
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        A burglar who has just robbed a shop is making his getaway. As he is running home, a policeman walking past sees
+        the man drop his glove. He doesn’t know the man is a burglar, but he just wants to tell him he dropped his
+        glove. But when the policeman shouts out to the burglar, “Hey, you! Stop!”, the burglar turns around, see the
+        policeman and gives himself up. He puts up his hands and admits that he did the break-in at the local shop.
+    </p>
+
+    {% formfield  player.burglar %}
+
+    <p>We would like to know your thinking process for how made your decision in the Task Game. Please briefly describe
+    how you made your choices in the box below</p>
+
+    {% formfield player.process %}
+
+    <p>Finally, if you have any other comments or suggestions you can write them in the box below.</p>
+
+    {% formfield player.comments %}
+
+    {% next_button %}
+
+{% endblock %}

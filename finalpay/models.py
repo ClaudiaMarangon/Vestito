@@ -38,7 +38,7 @@ class Player(BasePlayer):
 
 
     def set_payoff(self):
-        payoff_fin =  self.participant.vars['payoff_vest'] + self.participant.vars['circlet_payoff'] + self.participant.vars['money_pay']
+        payoff_fin = self.participant.vars['payoff_vest'] + self.participant.vars['circlet_payoff'] + self.participant.vars['money_pay']
         if payoff_fin < 100:
             self.payoff_final = 100
         else:

@@ -60,6 +60,7 @@ class Group(BaseGroup):
             p4.participant.vars['money_pay'] = p4.payoff
 
         p5.payoff = p5.choice + 20
+        p5.participant.vars['money_pay'] = p5.payoff
 
 
 

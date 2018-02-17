@@ -7,6 +7,7 @@ from .models import Constants
 class MyPage(Page):
     def before_next_page(self):
         self.player.set_payoff()
+        self.player.def_payoff()
     pass
 
 

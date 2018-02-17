@@ -13,7 +13,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'circle_task'
+    name_in_url = 'circle_demo'
     players_per_group = 5
     num_rounds = 1
     endowmentsqr = float(400)

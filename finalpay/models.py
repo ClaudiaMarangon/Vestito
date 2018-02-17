@@ -27,6 +27,14 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     payoff_final = models.FloatField()
+    payoff_vest = models.FloatField()
+    money_pay = models.FloatField()
+    circlet_payoff = models.FloatField()
+
+    def def_payoff(self):
+        self.payoff_vest = self.participant.vars['payoff_vest']
+        self.money_pay = self.participant.vars['money_pay']
+        self.circlet_payoff = self.participant.vars['circlet_payoff']
 
 
     def set_payoff(self):

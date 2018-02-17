@@ -26,14 +26,16 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    payoff_finalv = models.FloatField()
+    payoff_final = models.FloatField()
+
 
     def set_payoff(self):
-        n = random.randint(1, 3)
-        if n == 1:
-            self.payoff = self.participant.vars['payoff1']
-        elif n == 2:
-            self.payoff = self.participant.vars['payoff2']
+        self.payoff_finalv = self.participant.vars['payoff1'] + self.participant.vars['payoff2'] + self.participant.vars['payoff3']
+        payoff_fin =  self.participant.vars['payoff1'] + self.participant.vars['payoff2'] + self.participant.vars['payoff3'] + self.participant.vars['circlet_payoff'] + self.participant.vars['money_pay']
+        if payoff_fin < 100:
+            self.payoff_final = 100
         else:
-            self.payoff = self.participant.vars['payoff3']
+            self.payoff_final = payoff_fin
 
     pass

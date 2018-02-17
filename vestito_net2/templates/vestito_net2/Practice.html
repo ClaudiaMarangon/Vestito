@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Practice Questions
+{% endblock %}
+
+
+{% block content %}
+    <p>
+        To ensure all participants fully understand the game before the experiment begins, you will answer a number of
+        practice questions.
+    </p>
+
+    <p>
+        Click “Next” to begin the practice rounds.
+    </p>
+    {% next_button %}
+{% endblock %}

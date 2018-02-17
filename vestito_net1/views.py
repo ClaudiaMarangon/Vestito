@@ -16,34 +16,15 @@ class Rules(Page):
     def is_displayed(self):
         return self.round_number==1
 
-    def before_next_page(self):
-        if self.player.id_in_group == 1:
-            self.group.set_roles()
-            self.group.set_hints()
     pass
 
 class Set_Role_Wait_Page(WaitPage):
     def after_all_players_arrive(self):
         pass
 
-
-class Network(Page):
-    def vars_for_template(self):
-        return {
-            'net1': self.group.network == 1,
-            'net2': self.group.network == 2,
-            'net3': self.group.network == 3,
-            'hintts': self.player.hint == 'tshirt',
-            'hinth': self.player.hint == 'hat',
-            'hintp': self.player.hint == 'pants',
-            'hints': self.player.hint == 'shoes',
-            'hintg': self.player.hint == 'gloves',
-        }
-    pass
-
 class vestito(Page):
 
-    timeout_seconds = 900
+    timeout_seconds = 600
 
     form_model = models.Player
     form_fields = ['tshirt', 'hat', 'pants', 'gloves', 'shoes', 'hist', 'timestamp']
@@ -101,12 +82,75 @@ class NewRound(Page):
             self.group.set_hints()
     pass
 
+class Practice(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+    pass
 
+class Practice2(Page):
+    def is_displayed(self):
+        return self.round_number==1
+
+    form_model = models.Player
+    form_fields = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7']
+
+    def q1_error_message(self,value):
+        right = (value == 5)
+        if not right:
+            return 'Question 1 is wrong!'
+
+    def q2_error_message(self,value):
+        right = (value == 2)
+        if not right:
+            return 'Question 2 is wrong!'
+
+    def q3_error_message(self,value):
+        right = (value == 2)
+        if not right:
+            return 'Question 3 is wrong!'
+
+    def q4_error_message(self,value):
+        right = (value == 2)
+        if not right:
+            return 'Question 4 is wrong!'
+
+    def q5_error_message(self,value):
+        right = (value == 3)
+        if not right:
+            return 'Question 5 is wrong!'
+
+    def q6_error_message(self,value):
+        right = (value == 1)
+        if not right:
+            return 'Question 6 is wrong!'
+
+    def q7_error_message(self,value):
+        right = (value == 1)
+        if not right:
+            return 'Question 7 is wrong!'
+
+
+
+    pass
+
+class Practice_end(Page):
+    def is_displayed(self):
+        return self.round_number==1
+
+    def before_next_page(self):
+        if self.player.id_in_group == 1:
+            self.group.set_roles()
+            self.group.set_hints()
+
+    pass
 
 page_sequence = [
     Payement_Info,
     Rules,
     NewRound,
+    Practice,
+    Practice2,
+    Practice_end,
     Set_Role_Wait_Page,
     vestito,
     ResultsWP,

@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    End of Practice
+{% endblock %}
+
+
+{% block content %}
+    <p>
+        You have correctly answered to the practice questions. In the next part of the experiment, you will be paired
+        with other subjects and play the game in which the payoffs will be worth real money.
+    </p>
+
+    <p>
+        Click “Next” to begin the first round.
+    </p>
+
+    {% next_button %}
+{% endblock %}

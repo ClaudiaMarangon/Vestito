@@ -125,6 +125,70 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    q1 = models.IntegerField(
+        choices=[
+            [1, '5'], [2, '-5'], [3, '20'], [4, '0'], [5, '10']
+        ],
+        widget=widgets.RadioSelect,
+        verbose_name="Question 1. If you were to choose GREEN as the color of the hat, how many tokens would you get?"
+    )
+
+    q2 = models.IntegerField(
+        choices=[
+            [1, '5'], [2, '-5'], [3, '20'], [4, '0'], [5, '10']
+        ],
+        widget=widgets.RadioSelect,
+        verbose_name='Question 2. If you were to choose RED as the color of the hat, how many tokens would you get?'
+    )
+
+    q3 = models.IntegerField(
+        choices=[
+            [1, 'Player E and Player D have two hints each regarding the right colors.'],
+            [2, 'Player E and Player D can chat together.'],
+            [3, 'Nothing.'],
+            [4, 'Player E or Player D already know about the hat.']
+        ],
+        widget=widgets.RadioSelect,
+        verbose_name='Question 3. From the hint concerning the network structure, you see that you are assigned to position C. This means that you will be able to chat with Player D and Player E. Moreover, you can see from the picture that Player D and Player E are connected. What does this imply?'
+        )
+
+    q4 = models.IntegerField(
+        choices=[
+            [1, 'No, Player D does not have any information that you may need.'],
+            [2, 'Yes, Player D has certainly received information about a piece of clothing that’s notthe hat.'],
+            [3, 'Maybe, if Player D has received information about a piece of clothing that’s not the hat.'],
+        ],
+        widget=widgets.RadioSelect,
+        verbose_name='Do you think that Player D could have useful information regarding the color combination?'
+    )
+
+    q5 = models.IntegerField(
+        choices=[
+            [1, '40 and 0'], [2, '50 and 33'], [3, '50 and 20'], [4, '50 and 100'], [5, '40 and 33']
+        ],
+        widget=widgets.RadioSelect,
+        verbose_name='Question 5. Suppose that by the end of the round you have collected five hints concerning the colors. Suppose also that you are certain that these five hints are correct, and that all the other four players of the group have these same hints. What is the preliminary score that you expect to receive? What is the bonus score that you expect to receive?'
+            )
+
+    q6 = models.IntegerField(
+        choices=[
+            [1, '40 and 100'], [2, '30 and 100'], [3, '40 and 25'], [4, '40 and 0'], [5, '50 and 20']
+        ],
+        widget=widgets.RadioSelect,
+        verbose_name='Question 6. Suppose that by the end of the round you have collected four hints concerning the colors. Suppose also that you are certain that these four hints are correct, and that none of the other players has as many hints as you have. What is the preliminary score that you expect to receive? What is the bonus score that you expect to receive?'
+    )
+
+    q7 = models.IntegerField(
+        choices=[
+            [1, 'It will be not higher than 40 and no lower than -20.'],
+            [2, 'It will be not higher than 30 and no lower than -20.'],
+            [3, 'It will be not higher than 40 and no lower than 0.'],
+            [4, 'It will be not higher than 30 and no lower than 0.'],
+        ],
+        widget=widgets.RadioSelect,
+        verbose_name='Question 7. Suppose that by the end of the round you have collected four hints concerning the colors. Suppose also that you are not sure whether these hints are correct. What is the preliminary score you expect to receive?'
+    )
+
     name = models.CharField(
         verbose_name="Please enter your First Name:"
     )

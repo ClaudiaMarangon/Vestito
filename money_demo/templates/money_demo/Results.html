@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+    You earned {{ player.payoff }}
+
+    {% next_button %}
+{% endblock %}
+
+

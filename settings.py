@@ -102,11 +102,20 @@ SESSION_CONFIG_DEFAULTS = {
 
 
 SESSION_CONFIGS = [
+
+    {
+        'name': 'vestitito_demo',
+        'display_name': 'Vestitito Demo',
+        'num_demo_participants': 5,
+        'app_sequence': ['vestito_net1','money_demo', 'circle_demo', 'questionnaire', 'finalpay'],
+        'my_page_timeout_seconds': 60,
+    },
+
     {
          'name': 'vestito_net3',
          'display_name': 'Vestitito Network 3',
          'num_demo_participants': 5,
-         'app_sequence': ['vestito_net3', 'finalpay'],
+         'app_sequence': ['vestito_net3', 'money_request', 'circle_task', 'questionnaire', 'finalpay'],
          'my_page_timeout_seconds': 60,
      },
 
@@ -114,7 +123,7 @@ SESSION_CONFIGS = [
         'name': 'vestito_net1',
         'display_name': 'Vestitito Network 1',
         'num_demo_participants': 5,
-        'app_sequence': ['vestito_net1', 'finalpay'],
+        'app_sequence': ['vestito_net1', 'money_request', 'circle_task', 'questionnaire', 'finalpay'],
         'my_page_timeout_seconds': 60,
     },
 
@@ -122,7 +131,7 @@ SESSION_CONFIGS = [
         'name': 'vestito_net2',
         'display_name': 'Vestitito Network 2',
         'num_demo_participants': 5,
-        'app_sequence': ['vestito_net2', 'finalpay'],
+        'app_sequence': ['vestito_net2', 'money_request', 'circle_task', 'questionnaire', 'finalpay'],
         'my_page_timeout_seconds': 60,
     },
 

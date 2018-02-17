@@ -65,11 +65,10 @@ class Results(Page):
         }
     def before_next_page(self):
         if self.round_number == 1:
-            self.player.participant.vars['payoff1'] = self.player.payoff
-        elif self.round_number == 2:
-            self.player.participant.vars['payoff2'] = self.player.payoff
-        else:
-            self.player.participant.vars['payoff3'] = self.player.payoff
+            self.player.participant.vars['payoff_vest'] = 0
+
+        self.player.participant.vars['payoff_vest'] = self.player.participant.vars['payoff_vest'] + self.player.payoff
+
     pass
 
 class NewRound(Page):

@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+        <p>You chose to keep to yourself {{ player.choice }} and to give to your partner {{ player.otherpay |floatformat:2 }}.</p>
+
+    {% if P_choice %}
+        <p>
+            It was randomly chosen to set payoffs according to your choice.
+        </p>
+    {% else %}
+        <p>
+            It was randomly chosen to set payoffs according to your partner's choice.
+        </p>
+    {% endif %}
+
+        <p>
+            Therefore, your payoff is {{ player.payoff|floatformat:2 }}
+        </p>
+
+    {% next_button %}
+{% endblock %}
+

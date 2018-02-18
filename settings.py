@@ -120,6 +120,14 @@ SESSION_CONFIGS = [
      },
 
     {
+        'name': 'vestito_net3_20p',
+        'display_name': 'Vestitito Network 3 (20 Players)',
+        'num_demo_participants': 20,
+        'app_sequence': ['vestito_net3', 'money_req_20', 'circle_task_20', 'questionnaire', 'finalpay'],
+        'my_page_timeout_seconds': 60,
+    },
+
+    {
         'name': 'vestito_net1',
         'display_name': 'Vestitito Network 1',
         'num_demo_participants': 25,
@@ -128,10 +136,26 @@ SESSION_CONFIGS = [
     },
 
     {
+        'name': 'vestito_net1_20p',
+        'display_name': 'Vestitito Network 1 (20 Players)',
+        'num_demo_participants': 20,
+        'app_sequence': ['vestito_net1', 'money_req_20', 'circle_task_20', 'questionnaire', 'finalpay'],
+        'my_page_timeout_seconds': 60,
+    },
+
+    {
         'name': 'vestito_net2',
         'display_name': 'Vestitito Network 2',
         'num_demo_participants': 25,
         'app_sequence': ['vestito_net2', 'money_request', 'circle_task', 'questionnaire', 'finalpay'],
+        'my_page_timeout_seconds': 60,
+    },
+
+    {
+        'name': 'vestito_net2_20p',
+        'display_name': 'Vestitito Network 2 (20 Players)',
+        'num_demo_participants': 25,
+        'app_sequence': ['vestito_net2', 'money_req_20', 'circle_task_20', 'questionnaire', 'finalpay'],
         'my_page_timeout_seconds': 60,
     },
 

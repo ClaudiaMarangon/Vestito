@@ -5,12 +5,35 @@
     Practice Questions
 {% endblock %}
 
+{% block scripts %}
+  <script type="text/javascript">
+    $('input[type="radio"]').each(function(){
+        var $element = $(this);
+        var $label = $("label[for='"+this.id+"']");
+        $label.css("font-weight", "normal");
+    });
+  </script>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        div.hint {
+            background-color: white;
+            width: 650px;
+            border: 1px solid black;
+            padding: 25px;
+            margin: 25px;
+}
+    </style>
+
+
+{% endblock %}
 
 {% block content %}
     <p>
         Suppose you receive the following hint:
     </p>
-
+    <div class="hint">
     <p>
         The following network structure was randomly selected for your group and you have been assigned to node C.
     </p>
@@ -18,6 +41,7 @@
     <p>
         The color of the <b>hat</b> is <b>green</b>.
     </p>
+    </div>
 
     <img src = "{% static "vestito/Network2.png" %}"/>
 

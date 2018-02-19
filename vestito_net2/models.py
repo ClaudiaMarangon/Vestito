@@ -155,11 +155,11 @@ class Player(BasePlayer):
     q4 = models.IntegerField(
         choices=[
             [1, 'No, Player D does not have any information that you may need.'],
-            [2, 'Yes, Player D has certainly received information about a piece of clothing that’s notthe hat.'],
+            [2, 'Yes, Player D has certainly received information about a piece of clothing that’s not the hat.'],
             [3, 'Maybe, if Player D has received information about a piece of clothing that’s not the hat.'],
         ],
         widget=widgets.RadioSelect,
-        verbose_name='Do you think that Player D could have useful information regarding the color combination?'
+        verbose_name='Question 4. Do you think that Player D could have useful information regarding the color combination?'
     )
 
     q5 = models.IntegerField(

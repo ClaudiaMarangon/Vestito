@@ -9,13 +9,30 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{% static "vestito/indx.css" %}">
         <body style="padding-top: 3rem; padding-bottom: 0rem;"/>
+<style>
+        div.hint {
+            background-color: white;
+            width: 650px;
+            border: 1px solid black;
+            padding: 25px;
+            margin: 25px;
+}
+    </style>
 
+    <style>
+        div.next {
+            background-color: white;
+            height: 250px;
+            border: 1px solid white;
+            padding-top: 100px;
+}
+    </style>
 
 
 {% endblock %}
 
 {% block content %}
-
+    <div class ="hint">
     <p> The following network structure was randomly selected for your group and you have been assigned to node {{ player.role }}. </p>
     {% if hintts %}
         <p>The color of the <b>T-shirt</b> is <b>{{ group.tshirt_col }}</b></p>
@@ -28,6 +45,7 @@
     {% elif hints %}
         <p>The color of the <b>Shoes</b> is <b>{{ group.shoes_col }}</b></p>
     {% endif %}
+    </div>
 
 
     {% if net1 %}
@@ -225,7 +243,9 @@
 
 
     {{ form.hist.errors }}
-    {% next_button %}
+
+
+   <div class="next"> {% next_button %} </div>
 
 {% endblock %}
 

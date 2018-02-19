@@ -55,6 +55,15 @@ class ResultsWP(WaitPage):
     pass
 
 
+class EndRound(Page):
+
+    def before_next_page(self):
+        if self.round_number == 1:
+            self.player.participant.vars['payoff_vest'] = 0
+
+        self.player.participant.vars['payoff_vest'] = self.player.participant.vars['payoff_vest'] + self.player.payoff
+
+    pass
 
 class Results(Page):
     def vars_for_template(self):
@@ -152,11 +161,12 @@ page_sequence = [
     Rules,
     NewRound,
     Practice,
-    Practice2,
+    #Practice2,
     Practice_end,
     Set_Role_Wait_Page,
     vestito,
     ResultsWP,
-    Results,
+    EndRound,
+    #Results,
     End,
 ]

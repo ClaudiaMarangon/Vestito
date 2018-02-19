@@ -161,7 +161,7 @@ page_sequence = [
     Rules,
     NewRound,
     Practice,
-    #Practice2,
+    Practice2,
     Practice_end,
     Set_Role_Wait_Page,
     vestito,

@@ -248,19 +248,19 @@ class Player(BasePlayer):
     def no_col(self):
         n = 0
 
-        if self.tshirt == '':
+        if self.tshirt == '' or self.tshirt == 'grey':
             n = n + 1
 
-        if self.hat == '':
+        if self.hat == '' or self.hat == 'grey':
             n = n + 1
 
-        if self.pants == '':
+        if self.pants == '' or self.pants == 'grey':
             n = n + 1
 
-        if self.gloves == '':
+        if self.gloves == '' or self.gloves == 'grey':
             n = n + 1
 
-        if self.shoes == '':
+        if self.shoes == '' or self.shoes == 'grey':
             n = n + 1
 
         return n

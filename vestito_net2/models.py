@@ -15,7 +15,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'vestito_net2'
     players_per_group = 5
-    num_rounds = 4
+    num_rounds = 5
     maxpay = 100
     twopay = 50
     threepay = 33

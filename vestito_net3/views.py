@@ -24,7 +24,7 @@ class Set_Role_Wait_Page(WaitPage):
 
 class vestito(Page):
 
-    timeout_seconds = 600
+    timeout_seconds = 480
 
     form_model = models.Player
     form_fields = ['tshirt', 'hat', 'pants', 'gloves', 'shoes', 'hist', 'timestamp']
@@ -155,7 +155,7 @@ class Practice_end(Page):
 
 class End(Page):
     def is_displayed(self):
-        return self.round_number==4
+        return self.round_number==5
 
 page_sequence = [
     Payement_Info,
